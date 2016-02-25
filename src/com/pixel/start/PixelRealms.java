@@ -6,8 +6,13 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
+import com.pixel.input.KeyboardListener;
+import com.pixel.input.KeyBinder;
+import com.pixel.input.KeyBinding;
+import com.pixel.input.KeyCode;
 import com.pixel.stage.Stage;
 import com.pixel.stage.StageLogin;
+
 
 public class PixelRealms extends BasicGame {
 
@@ -56,7 +61,7 @@ public class PixelRealms extends BasicGame {
 	@Override
 	public void init(GameContainer c) throws SlickException {
 		// TODO Auto-generated method stub
-		
+		c.getInput().addKeyListener(new KeyboardListener());
 	}
 
 	@Override
