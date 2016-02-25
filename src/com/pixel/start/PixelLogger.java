@@ -26,7 +26,7 @@ public class PixelLogger {
 	
 	public static void debug(String key) {
 		
-		System.out.print(debugPrefix + key);
+		System.out.println(debugPrefix + key);
 		
 	}
 	

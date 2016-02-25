@@ -7,6 +7,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
 import com.pixel.input.KeyboardListener;
+import com.pixel.input.MouseClickListener;
 import com.pixel.stage.Stage;
 import com.pixel.stage.StageLogin;
 import com.pixel.util.TextureLoader;
@@ -18,7 +19,6 @@ public class PixelRealms extends BasicGame {
 	
 	public PixelRealms(String title) throws SlickException {
 		super(title);
-		
 	}
 	
 	public static void main(String[] args) {
@@ -66,7 +66,7 @@ public class PixelRealms extends BasicGame {
 		TextureLoader.init();
 		stage.init(c);
 		c.getInput().addKeyListener(new KeyboardListener());
-
+		c.getInput().addMouseListener(new MouseClickListener());
 	}
 
 	@Override
