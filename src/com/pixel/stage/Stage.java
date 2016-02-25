@@ -19,6 +19,19 @@ public class Stage {
 		
 		
 	}
+	
+
+	public void init(GameContainer c) {
+		
+		initializeGUI();
+		
+	}
+	
+	public void initializeGUI() {
+		
+		
+		
+	}
 
 	public void render(GameContainer c, Graphics g) {
 		

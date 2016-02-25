@@ -5,21 +5,28 @@ public class PixelLogger {
 	public static String prefix = "[Pixel Realms] ";
 	public static String debugPrefix = "[Debug] ";
 	
+	public static enum LogType {
+		
+		RENDER_TICK,
+		UPDATE_TICK
+		
+	}
+	
 	public static void err(String error) {
 		
 		System.out.println(prefix + error);
 		
 	}
 	
-	public static void log(String log) {
+	public static void log(String log, LogType type) {
 		
 		System.out.println(prefix + log);
 
 	}
 	
-	public static void print(String msg) {
+	public static void debug(String key) {
 		
-		System.out.println(prefix + msg);
+		System.out.print(debugPrefix + key);
 		
 	}
 	
