@@ -4,9 +4,15 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
-public class GUIButton extends GUIComponentSet{
+import com.pixel.input.MouseBinder;
+import com.pixel.input.MouseBinding;
+import com.pixel.input.MouseClickListener;
+import com.pixel.start.PixelLogger;
+import com.pixel.start.PixelRealms;
+
+public class GUIButton extends GUIComponentSet implements MouseBinder {
 	
-	public GUIButton(int x, int y, int w, int h, GUIComponentText gct) {
+	public GUIButton(int x, int y, int w, int h, GUIComponentText gct, String identifier) {
 		
 		super(x, y, w, h, new GUIComponent[]{
 				new GUIComponent(x, y, 20, 20, "/" + "gui" + "/" + "button" + "/" + "top_left.png"),
@@ -25,10 +31,14 @@ public class GUIButton extends GUIComponentSet{
 		width = w;
 		height = h;
 		text = gct.text;
+		this.identifier = identifier;
+		
+		MouseClickListener.addMouseBinding(new MouseBinding(this, 0));
+		
 	}
 	
 	public void setPressed(boolean b) {
-		if (pressed) {
+		if (!pressed) {
 			components[0].setTexture("gui" + "/" + "button" + "/" + "pressed" + "/" + "top_left.png");
 			components[1].setTexture("gui" + "/" + "button" + "/" + "pressed" + "/" + "top_right.png");
 			components[2].setTexture("gui" + "/" + "button" + "/" + "pressed" + "/" + "bottom_left.png");
@@ -49,9 +59,11 @@ public class GUIButton extends GUIComponentSet{
 			components[7].setTexture("gui" + "/" + "button" + "/" + "left.png");
 			components[8].setTexture("gui" + "/" + "button" + "/" + "center.png");
 		}
+		pressed = b;
 	}
 	
 	public void render(GameContainer c, Graphics g) {
+
 		super.render(c, g);
 	}
 
@@ -65,5 +77,21 @@ public class GUIButton extends GUIComponentSet{
 	
 	public boolean pressed;
 	public int width, height, posX, posY;
-	public String text;
+	public String text, identifier;
+	
+	@Override
+	public void mouseDown(int x, int y) {
+		// TODO Auto-generated method stub
+		setPressed(true);
+
+	}
+
+	@Override
+	public void mouseUp(int x, int y) {
+		// TODO Auto-generated method stub
+		setPressed(false);
+
+		PixelRealms.game.stage.buttonPressed(this);
+	}
+
 }

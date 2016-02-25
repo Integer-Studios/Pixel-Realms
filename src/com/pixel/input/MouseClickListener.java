@@ -5,6 +5,8 @@ import java.util.HashMap;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
 
+import com.pixel.start.PixelLogger;
+
 
 
 public class MouseClickListener implements MouseListener {

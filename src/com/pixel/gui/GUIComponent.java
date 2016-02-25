@@ -36,7 +36,7 @@ public class GUIComponent {
 
 	public void setTexture(String s) { 
 		texture = s;
-		image = TextureLoader.loadImage(texture);
+		image = TextureLoader.load(texture);
 	}
 	
 	public void setX(int x) {

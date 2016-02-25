@@ -1,5 +1,8 @@
 package com.pixel.input;
 
+import com.pixel.gui.GUIButton;
+import com.pixel.start.PixelLogger;
+
 public class MouseBinding {
 	
 	public MouseBinding(String n, int x, int y, int width, int height, int button, MouseBinder m) {
@@ -12,17 +15,28 @@ public class MouseBinding {
 		mouseBinder = m;
 	}
 	
+	public MouseBinding(GUIButton component, int button) {
+		name = component.identifier;
+		this.x = component.x;
+		this.y = component.y;
+		this.width = component.width;
+		this.height = component.height;
+		this.button = button;
+		mouseBinder = component;
+	}
+	
 	private boolean isInArea(int x, int y) {
 		return (this.x < x && this.x + this.width > x && this.y < y && this.y + this.height > y);
 	}
 	
 	public void mousePressed(int button, int x, int y) {
 		// TODO Auto-generated method stub
+
 		if (isInArea(x, y)) {
 			if (this.button == button) {
 				mouseBinder.mouseDown(x, y);
-			} else if (this.button == 2){
-				mouseBinder.mouseDown(button, x, y);
+			} else if (this.button == 2 && mouseBinder instanceof MouseBinderFull){
+				((MouseBinderFull)mouseBinder).mouseDown(button, x, y);
 			}
 		}
 	}
@@ -31,8 +45,8 @@ public class MouseBinding {
 		if (isInArea(x, y)) {
 			if (this.button == button) {
 				mouseBinder.mouseUp(x, y);
-			} else if (this.button == 2){
-				mouseBinder.mouseUp(button, x, y);
+			} else if (this.button == 2 && mouseBinder instanceof MouseBinderFull){
+				((MouseBinderFull)mouseBinder).mouseUp(button, x, y);
 			}
 		}
 	}

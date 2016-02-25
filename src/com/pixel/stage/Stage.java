@@ -6,11 +6,11 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import com.pixel.gui.*;
+import com.pixel.start.PixelLogger;
 import com.pixel.start.PixelRealms;
 
 public class Stage {
 	
-	public PixelRealms pixel;
 	public boolean initialized = false;
 	
 	public enum StageType {
@@ -18,12 +18,6 @@ public class Stage {
 		STAGE_LOGIN,
 		STAGE_MAIN_MENU,
 		STAGE_WORLD
-		
-	}
-	
-	public Stage(PixelRealms pixel) {
-		
-		this.pixel = pixel;
 		
 	}
 	
@@ -39,6 +33,8 @@ public class Stage {
 		
 		initializeGUI();
 		
+		initialized = true;
+		
 	}
 	
 	public void initializeGUI() {
@@ -48,7 +44,7 @@ public class Stage {
 	}
 
 	public void render(GameContainer c, Graphics g) {
-		
+
 		for (GUIComponent component : gui) {
 
 			component.render(c, g);

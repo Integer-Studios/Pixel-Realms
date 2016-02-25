@@ -12,11 +12,13 @@ import com.pixel.stage.Stage;
 import com.pixel.stage.Stage.StageType;
 import com.pixel.stage.StageLogin;
 import com.pixel.stage.StageMainMenu;
+import com.pixel.stage.StageWorld;
 import com.pixel.util.TextureLoader;
 
 public class PixelRealms extends BasicGame {
 
 	public Stage stage;
+	public static PixelRealms game;
 	
 	public PixelRealms(String title) throws SlickException {
 		super(title);
@@ -46,7 +48,8 @@ public class PixelRealms extends BasicGame {
         container.setMaximumLogicUpdateInterval(35); // Max. 200 miliseconds can pass
         container.setMinimumLogicUpdateInterval(25);
 
-        game.stage = new StageLogin(game);
+        PixelRealms.game = game;
+        game.stage = new StageLogin();
 
 		container.start();
 		
@@ -57,15 +60,15 @@ public class PixelRealms extends BasicGame {
 		switch(type) {
 			case STAGE_LOGIN:
 				stage = null;
-				stage = new StageLogin(this);
+				stage = new StageLogin();
 				break;
 			case STAGE_MAIN_MENU:
 				stage = null;
-				stage = new StageMainMenu(this);
+				stage = new StageMainMenu();
 				break;
 			case STAGE_WORLD:
 				stage = null;
-//				stage = new StageMainMenu(this);
+				stage = new StageWorld();
 				break;
 			
 		}

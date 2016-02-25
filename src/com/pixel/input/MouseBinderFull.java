@@ -8,4 +8,8 @@ public interface MouseBinderFull extends MouseBinder {
 
 	void mouseWheelMoved(int change);
 
+	void mouseDown(int button, int x, int y);
+
+	void mouseUp(int button, int x, int y);
+	
 }

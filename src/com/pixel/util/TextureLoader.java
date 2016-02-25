@@ -36,9 +36,7 @@ public class TextureLoader {
 			if (path.length() > 0 && path.substring(0,path.lastIndexOf("/")).length() > 0) {
 				 try {
 					 
-					 Image i = new Image(path);
-					 i.setFilter(Image.FILTER_NEAREST);
-					 return i;
+					 return new Image(path);
 		        } catch (SlickException e) {
 		     
 		        }
